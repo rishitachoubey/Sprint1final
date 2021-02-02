@@ -22,6 +22,7 @@ public class Order {
 	@Id
 	@Column(name = "order_id")
 	private int orderId;
+	
 
 	/**
 	 * Id of the customer who placed order
@@ -30,6 +31,12 @@ public class Order {
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
 	private Customer customerId;
+	
+	/**
+	 * Name of the Customer
+	 */
+	
+	private Customer custName;
 
 	/**
 	 * List of the order items placed based on order ID
@@ -37,6 +44,8 @@ public class Order {
 
 	@OneToMany(mappedBy = "orderId")
 	private List<OrderItems> items;
+
+	
 
 	/**
 	 * Price of the ordered items
@@ -87,6 +96,13 @@ public class Order {
 
 	public void setItems(List<OrderItems> items) {
 		this.items = items;
+	}
+	public Customer getCustName() {
+		return custName;
+	}
+
+	public void setCustName(Customer custName) {
+		this.custName = custName;
 	}
 
 	public double getPrice() {
